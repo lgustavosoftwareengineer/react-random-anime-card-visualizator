@@ -38,7 +38,7 @@ describe('SignUpUser', () => {
     expect(clickToSeeCardsButton).toBeEnabled()
   })
 
-  it("should go to random dogs cards page when click in 'Clicar para ver cartas' button", () => {
+  it("should go to random cards page when click in 'Clicar para ver cartas' button", () => {
     render(<SignUpUserWithRouterContextProvider />)
     const nameTextInput = screen.getByPlaceholderText('Digite aqui o seu nome')
     const clickToSeeCardsButton = screen.getByDisplayValue(

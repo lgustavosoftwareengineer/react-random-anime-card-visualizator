@@ -7,7 +7,7 @@ export const SignUpUser = () => {
 
   const isUserNameDefined = Boolean(userName.length)
 
-  const onClickGoToRandomDogsCardsPage = () => {
+  const onClickGoToRandomCardsPage = () => {
     push('/cards')
   }
 
@@ -24,7 +24,7 @@ export const SignUpUser = () => {
         type="button"
         value="Clicar para ver cartas"
         disabled={!isUserNameDefined}
-        onClick={onClickGoToRandomDogsCardsPage}
+        onClick={onClickGoToRandomCardsPage}
       />
     </div>
   )
