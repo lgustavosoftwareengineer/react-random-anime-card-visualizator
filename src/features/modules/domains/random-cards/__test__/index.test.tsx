@@ -10,6 +10,10 @@ jest.mock('../utils', () => {
   }
 })
 
+jest.mock('src/shared/user', () => ({
+  useUser: () => ({ user: { name: 'Testing user' } }),
+}))
+
 const nockFetchAnimeByIdWithEmptyResponse = () => {
   return nock(NEXT_PUBLIC_API_BASE_URL)
     .get(/anime\/[0-9].*/g)
@@ -21,6 +25,12 @@ const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? ''
 describe('RandomCards', () => {
   beforeEach(() => {
     render(<RandomCards />)
+  })
+
+  it('should show user name as "Testing user" when came to RandomCards page', () => {
+    const useNameElement = screen.getByTestId('user-name-test-id')
+
+    expect(useNameElement).toHaveTextContent('Testing user')
   })
 
   it('should show 5 spinners when cards is still loading', () => {
