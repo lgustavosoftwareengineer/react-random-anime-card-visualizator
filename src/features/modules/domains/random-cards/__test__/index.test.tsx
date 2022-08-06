@@ -4,8 +4,6 @@ import nock from 'nock'
 
 import { RandomCards } from '..'
 
-// import { fetchAnimeByIdResponseMock } from '../mocks'
-
 jest.mock('../utils', () => {
   return {
     buildCardsElementsListWithRandomNumbersValues: () => [1, 2, 3, 4, 5],
