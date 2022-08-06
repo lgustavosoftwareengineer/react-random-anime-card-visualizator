@@ -40,6 +40,10 @@ export const AnimeCard = ({ randomElementId, ...props }: AnimeCardProps) => {
 
   const { data: animeDetails } = dataFromResponse ?? {}
 
+  const randomElementNumberBasedInElementIdTillTen = Math.round(
+    randomElementId / 11,
+  )
+
   return (
     <Card data-testid="card-test-id" {...props}>
       <Container>
@@ -55,7 +59,7 @@ export const AnimeCard = ({ randomElementId, ...props }: AnimeCardProps) => {
           )}
         </Header>
         <ContentText>{animeDetails?.attributes.description}</ContentText>
-        <ContentText>{randomElementId}</ContentText>
+        <ContentText>{randomElementNumberBasedInElementIdTillTen}</ContentText>
       </Container>
     </Card>
   )
