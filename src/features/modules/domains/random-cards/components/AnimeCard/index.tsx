@@ -18,7 +18,7 @@ export const AnimeCard = ({ randomElementId, ...props }: AnimeCardProps) => {
   const isLoading = !error && !response
 
   if (isLoading) {
-    return <LoadingIndicator data-testid="loading-activity-test-id" />
+    return <LoadingIndicator />
   }
 
   const { data: dataFromResponse } = response ?? {}
