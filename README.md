@@ -23,6 +23,12 @@ yarn install // ou npm install
 yarn dev // npm run dev
 ```
 
+3. Abra o seguinte link no seu navegador
+
+```
+http://localhost:3000/
+```
+
 ## 🎉 Metadados
 
 Luiz Gustavo – luiz.matias@upe.br<br>
@@ -33,7 +39,7 @@ Distributed under MIT license. See `LICENSE` for more informations.
 
 ## 💻 Tecnologias
 
-- [NestJS](https://nestjs.com/)
+- [NextJS](https://nextjs.org/)
 - [React](https://reactjs.org/)
 - [Zustand](https://github.com/pmndrs/zustand)
 - [SWR](https://swr.vercel.app/)
