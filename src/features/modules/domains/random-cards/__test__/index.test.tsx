@@ -2,6 +2,8 @@ import React from 'react'
 import { screen, render, fireEvent, waitFor } from '@testing-library/react'
 import nock from 'nock'
 
+import { nextRouterMock, NextRouterProvider } from 'src/mocks'
+
 import { RandomCards } from '..'
 
 jest.mock('../utils', () => {
@@ -23,8 +25,14 @@ const nockFetchAnimeByIdWithEmptyResponse = () => {
 const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? ''
 
 describe('RandomCards', () => {
+  const defaultRouterMocked = nextRouterMock()
+
   beforeEach(() => {
-    render(<RandomCards />)
+    render(
+      <NextRouterProvider value={defaultRouterMocked}>
+        <RandomCards />
+      </NextRouterProvider>,
+    )
   })
 
   it('should show user name as "Testing user" when came to RandomCards page', () => {
@@ -109,4 +117,6 @@ describe('RandomCards', () => {
 
     expect(cardsBeforeShuffle).not.toEqual(cardsAfterShuffle)
   })
+
+  it.todo('should back to sign up screen when user name is empty')
 })
