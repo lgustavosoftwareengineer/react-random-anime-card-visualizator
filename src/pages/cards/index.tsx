@@ -1,3 +1,3 @@
-import { SeeRandomCards } from 'src/features/modules/domains/random-cards'
+import { RandomCards } from 'src/features/modules/domains/random-cards'
 
-export default SeeRandomCards
+export default RandomCards
