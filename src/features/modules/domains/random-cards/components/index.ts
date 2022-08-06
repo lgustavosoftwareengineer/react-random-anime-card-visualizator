@@ -1,1 +1,1 @@
-export * from './AnimeCard'
+export * from './AnimeCardsList'

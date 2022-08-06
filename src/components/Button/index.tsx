@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { StyledButtonInput } from './styles'
 
 export type ButtonProps = React.InputHTMLAttributes<HTMLInputElement>

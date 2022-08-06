@@ -1,8 +1,9 @@
-import Image from 'next/image'
 import React from 'react'
-import { Card, LoadingIndicator, CardProps } from 'src/components'
+import Image from 'next/image'
 import useSWR from 'swr'
-import { fetchAnimeById } from '../../requests'
+
+import { Card, LoadingIndicator, CardProps } from 'src/components'
+import { fetchAnimeById } from 'src/features/modules/domains/random-cards/requests'
 
 import {
   Container,
