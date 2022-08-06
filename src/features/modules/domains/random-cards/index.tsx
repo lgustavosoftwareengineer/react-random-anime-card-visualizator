@@ -5,7 +5,6 @@ import { Button } from 'src/components'
 import { useUser } from 'src/shared'
 
 import { AnimeCardsList } from './components'
-
 import {
   Main,
   ButtonsContainer,

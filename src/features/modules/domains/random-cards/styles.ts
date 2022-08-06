@@ -10,14 +10,6 @@ export const Main = styled.main`
   overflow-x: auto;
 `
 
-export const CardsListContainer = styled.div`
-  display: flex;
-  flex: 2;
-  max-width: 100vw;
-  overflow-x: auto;
-  padding: 40px;
-`
-
 export const ButtonsContainer = styled.div`
   display: flex;
   flex: 1;
