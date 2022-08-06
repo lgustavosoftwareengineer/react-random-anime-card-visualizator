@@ -1,18 +1,39 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-export const CardContent = styled.div`
+export const Title = styled.p`
+  height: 40px;
+  font-size: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+`
+
+export const ContainerCSS = css`
   display: flex;
-  padding: 20px;
   width: 200px;
   height: 500px;
   flex-direction: column;
-  justify-content: space-between;
-
-  p {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 10;
-    -webkit-box-orient: vertical;
-  }
 `
+
+export const Container = styled.div`
+  ${ContainerCSS}
+  padding: 20px;
+  justify-content: space-between;
+  text-align: center;
+`
+
+export const LoadingContainer = styled.div`
+  ${ContainerCSS}
+  justify-content: center;
+  align-items: center;
+`
+
+export const ContentText = styled.p`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+`
+
+export const Header = styled.div``

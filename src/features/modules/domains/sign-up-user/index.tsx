@@ -1,9 +1,9 @@
 import React from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from 'src/shared'
-import { Card } from 'src/components'
+import { Card, Button, TextInput } from 'src/components'
 
-import { CardContent, Main, TextInput, Button } from './styles'
+import { CardContent, Main, WelcomeText } from './styles'
 
 export const SignUpUser = () => {
   const { push } = useRouter()
@@ -20,19 +20,17 @@ export const SignUpUser = () => {
     <Main>
       <Card>
         <CardContent>
-          <p>
+          <WelcomeText>
             Seja bem-vindo(a) ao <b>react-random-anime-card-visualizator</b>
             <br /> Adicione seu nome logo a baixo para começar
-          </p>
+          </WelcomeText>
           <TextInput
-            type="text"
             name="user-name-input"
             placeholder="Digite aqui o seu nome"
             value={name}
             onChange={({ target }) => setUser({ name: target.value })}
           />
           <Button
-            type="button"
             value="Clicar para ver cartas"
             disabled={!isUserNameDefined}
             onClick={onClickGoToRandomCardsPage}

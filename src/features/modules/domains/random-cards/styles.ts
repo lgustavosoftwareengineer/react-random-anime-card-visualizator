@@ -7,16 +7,15 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: green;
+  overflow-x: auto;
 `
 
 export const CardsListContainer = styled.div`
   display: flex;
   flex: 2;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  background-color: red;
+  max-width: 100vw;
+  overflow-x: auto;
+  padding: 40px;
 `
 
 export const ButtonsContainer = styled.div`
@@ -24,14 +23,19 @@ export const ButtonsContainer = styled.div`
   flex: 1;
   width: 100%;
   align-items: center;
-  background-color: blue;
-
-  input {
-    flex: 1;
-    height: 80px;
-  }
+  justify-content: center;
 `
 
 export const EmptySeparator = styled.div`
-  width: 1.4vw;
+  width: 20px;
+`
+export const Header = styled.header`
+  display: flex;
+  width: 100%;
+  padding: 20px;
+  justify-content: flex-end;
+`
+
+export const UserName = styled.p`
+  font-weight: bold;
 `

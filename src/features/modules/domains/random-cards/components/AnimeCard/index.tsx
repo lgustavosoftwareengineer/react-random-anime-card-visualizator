@@ -4,7 +4,13 @@ import { Card, LoadingIndicator, CardProps } from 'src/components'
 import useSWR from 'swr'
 import { fetchAnimeById } from '../../requests'
 
-import { CardContent } from './styles'
+import {
+  Container,
+  ContentText,
+  Title,
+  Header,
+  LoadingContainer,
+} from './styles'
 
 export type AnimeCardProps = { randomElementId: number } & Omit<
   CardProps,
@@ -20,7 +26,13 @@ export const AnimeCard = ({ randomElementId, ...props }: AnimeCardProps) => {
   const isLoading = !error && !response
 
   if (isLoading) {
-    return <LoadingIndicator />
+    return (
+      <Card data-testid="card-test-id" {...props}>
+        <LoadingContainer>
+          <LoadingIndicator />
+        </LoadingContainer>
+      </Card>
+    )
   }
 
   const { data: dataFromResponse } = response ?? {}
@@ -29,21 +41,21 @@ export const AnimeCard = ({ randomElementId, ...props }: AnimeCardProps) => {
 
   return (
     <Card data-testid="card-test-id" {...props}>
-      <CardContent>
-        <div>
-          <h3>{animeDetails?.attributes.slug}</h3>
+      <Container>
+        <Header>
+          <Title>{animeDetails?.attributes.slug}</Title>
           {animeDetails?.attributes.posterImage.large && (
             <Image
               src={animeDetails?.attributes.posterImage.large ?? ''}
               alt="anime-poster-image"
               width={100}
-              height={100}
+              height={150}
             />
           )}
-        </div>
-        <p>{animeDetails?.attributes.description}</p>
-        <p>{randomElementId}</p>
-      </CardContent>
+        </Header>
+        <ContentText>{animeDetails?.attributes.description}</ContentText>
+        <ContentText>{randomElementId}</ContentText>
+      </Container>
     </Card>
   )
 }

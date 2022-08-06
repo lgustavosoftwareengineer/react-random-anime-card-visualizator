@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { Fragment, useEffect, useState } from 'react'
+import { Button } from 'src/components'
 import { useUser } from 'src/shared'
 import { AnimeCard } from './components'
 
@@ -8,6 +9,8 @@ import {
   CardsListContainer,
   ButtonsContainer,
   EmptySeparator,
+  Header,
+  UserName,
 } from './styles'
 import { buildCardsElementsListWithRandomNumbersValues } from './utils'
 
@@ -44,9 +47,9 @@ export const RandomCards = () => {
 
   return (
     <Main>
-      <header>
-        <p data-testid="user-name-test-id">{user.name}</p>
-      </header>
+      <Header>
+        <UserName data-testid="user-name-test-id">{user.name}</UserName>
+      </Header>
       <CardsListContainer>
         {cards.map((element, _, list) => {
           const isLastElement = list[list.length - 1] === element
@@ -60,8 +63,7 @@ export const RandomCards = () => {
         })}
       </CardsListContainer>
       <ButtonsContainer>
-        <input
-          type="button"
+        <Button
           value={
             shouldClickAddMoreCardButtonBeDisabled
               ? 'Limite atingido (3x)'
@@ -70,11 +72,8 @@ export const RandomCards = () => {
           onClick={onClickAddOneMoreCard}
           disabled={shouldClickAddMoreCardButtonBeDisabled}
         />
-        <input
-          type="button"
-          value="Embaralhar cartas"
-          onClick={onClickShuffleCards}
-        />
+        <EmptySeparator />
+        <Button value="Embaralhar cartas" onClick={onClickShuffleCards} />
       </ButtonsContainer>
     </Main>
   )
