@@ -10,6 +10,12 @@ jest.mock('../utils', () => {
   }
 })
 
+const nockFetchAnimeByIdWithEmptyResponse = () => {
+  return nock(NEXT_PUBLIC_API_BASE_URL)
+    .get(/anime\/[0-9].*/g)
+    .reply(200, {})
+}
+
 const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? ''
 
 describe('RandomCards', () => {
@@ -18,9 +24,7 @@ describe('RandomCards', () => {
   })
 
   it('should show 5 spinners when cards is still loading', () => {
-    nock(NEXT_PUBLIC_API_BASE_URL)
-      .get(/anime\/[0-9].*/g)
-      .reply(200, {})
+    nockFetchAnimeByIdWithEmptyResponse()
 
     const loadingIndicators = screen.getAllByTestId('loading-activity-test-id')
 
@@ -48,9 +52,7 @@ describe('RandomCards', () => {
     })
   })
   it('should the new card added be shown with a spinner when it is still loading', async () => {
-    nock(NEXT_PUBLIC_API_BASE_URL)
-      .get(/anime\/[0-9].*/g)
-      .reply(200, {})
+    nockFetchAnimeByIdWithEmptyResponse()
     const getMoreCardButton = screen.getByDisplayValue(
       'Puxar uma nova carta aleatoriamente',
     )
