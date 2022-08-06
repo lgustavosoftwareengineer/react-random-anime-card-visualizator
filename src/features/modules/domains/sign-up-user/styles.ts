@@ -6,6 +6,7 @@ export const Main = styled.main`
   height: 100vh;
   align-items: center;
   justify-content: center;
+  background-color: green;
 `
 export const CardContent = styled.div`
   padding: 20px;

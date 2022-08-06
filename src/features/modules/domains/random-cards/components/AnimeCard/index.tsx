@@ -4,6 +4,8 @@ import { Card, LoadingIndicator, CardProps } from 'src/components'
 import useSWR from 'swr'
 import { fetchAnimeById } from '../../requests'
 
+import { CardContent } from './styles'
+
 export type AnimeCardProps = { randomElementId: number } & Omit<
   CardProps,
   'children'
@@ -27,17 +29,21 @@ export const AnimeCard = ({ randomElementId, ...props }: AnimeCardProps) => {
 
   return (
     <Card data-testid="card-test-id" {...props}>
-      <p>{animeDetails?.attributes.slug}</p>
-      {animeDetails?.attributes.posterImage.large && (
-        <Image
-          src={animeDetails?.attributes.posterImage.large ?? ''}
-          alt="anime-poster-image"
-          width={100}
-          height={100}
-        />
-      )}
-      <p>{animeDetails?.attributes.description}</p>
-      <p>{randomElementId}</p>
+      <CardContent>
+        <div>
+          <h3>{animeDetails?.attributes.slug}</h3>
+          {animeDetails?.attributes.posterImage.large && (
+            <Image
+              src={animeDetails?.attributes.posterImage.large ?? ''}
+              alt="anime-poster-image"
+              width={100}
+              height={100}
+            />
+          )}
+        </div>
+        <p>{animeDetails?.attributes.description}</p>
+        <p>{randomElementId}</p>
+      </CardContent>
     </Card>
   )
 }

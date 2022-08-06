@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useRouter } from 'next/router'
 import { useUser } from 'src/shared'
 import { Card } from 'src/components'
@@ -6,14 +6,13 @@ import { Card } from 'src/components'
 import { CardContent, Main, TextInput, Button } from './styles'
 
 export const SignUpUser = () => {
-  const [userName, setUserName] = useState('')
-  const { setUser } = useUser()
   const { push } = useRouter()
+  const { user, setUser } = useUser()
+  const { name } = user
 
-  const isUserNameDefined = Boolean(userName.length)
+  const isUserNameDefined = Boolean(name.length)
 
   const onClickGoToRandomCardsPage = () => {
-    setUser({ name: userName })
     push('/cards')
   }
 
@@ -29,8 +28,8 @@ export const SignUpUser = () => {
             type="text"
             name="user-name-input"
             placeholder="Digite aqui o seu nome"
-            value={userName}
-            onChange={({ target }) => setUserName(target.value)}
+            value={name}
+            onChange={({ target }) => setUser({ name: target.value })}
           />
           <Button
             type="button"
