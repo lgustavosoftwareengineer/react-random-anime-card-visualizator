@@ -6,7 +6,7 @@ import { nextRouterMock, NextRouterProvider } from 'src/mocks'
 
 import { RandomCards } from '..'
 
-jest.mock('../utils', () => {
+jest.mock('../utils/buildCardsElementsListWithRandomNumbersValues.ts', () => {
   return {
     buildCardsElementsListWithRandomNumbersValues: () => [1, 2, 3, 4, 5],
   }
@@ -117,6 +117,4 @@ describe('RandomCards', () => {
 
     expect(cardsBeforeShuffle).not.toEqual(cardsAfterShuffle)
   })
-
-  it.todo('should back to sign up screen when user name is empty')
 })
