@@ -20,7 +20,7 @@ yarn install // ou npm install
 3. Executar o projeto:
 
 ```
-yarn dev // npm dev
+yarn dev // npm run dev
 ```
 
 ## 🎉 Metadados
