@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { useRouter } from 'next/router'
+import { useUser } from 'src/shared'
 
 export const SignUpUser = () => {
   const [userName, setUserName] = useState('')
+  const { setUser } = useUser()
   const { push } = useRouter()
 
   const isUserNameDefined = Boolean(userName.length)
 
   const onClickGoToRandomCardsPage = () => {
+    setUser({ name: userName })
     push('/cards')
   }
 

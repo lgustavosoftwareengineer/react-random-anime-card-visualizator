@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useUser } from 'src/shared'
 import { AnimeCard } from './components'
 
 import { Main, CardsListContainer } from './styles'
@@ -8,6 +9,8 @@ const CARDS_ELEMENTS = buildCardsElementsListWithRandomNumbersValues()
 const CLICK_ADD_MORE_CARD_BUTTON_TIMES_AMOUNT_LIMIT = 3
 
 export const RandomCards = () => {
+  const { user } = useUser()
+
   const [cards, setCards] = useState(CARDS_ELEMENTS)
   const [clickAddMoreCardTimeAmount, setClickAddMoreCardTimeAmount] =
     useState(0)
@@ -28,6 +31,7 @@ export const RandomCards = () => {
 
   return (
     <Main>
+      <p data-testid="user-name-test-id">{user.name}</p>
       <CardsListContainer>
         {cards.map((element) => (
           <AnimeCard randomElementId={element} key={element} />
