@@ -1,5 +1,5 @@
-export type AnimeResponse = {
-  data: Datum[]
+export type AnimeByIdResponse = {
+  data: Datum
   meta: AnimeResponseMeta
   links: AnimeResponseLinks
 }
