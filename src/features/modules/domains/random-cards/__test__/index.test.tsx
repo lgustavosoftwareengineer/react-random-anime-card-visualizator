@@ -30,23 +30,23 @@ describe('RandomCards', () => {
 
   it('should back to sign up screen when user name is empty', () => {
     mockedUseUser.mockReturnValue({ user: { name: '' } })
-
     render(
       <NextRouterProvider value={defaultRouterMocked}>
         <RandomCards />
       </NextRouterProvider>,
     )
+
     expect(defaultRouterMocked.replace).toBeCalledWith('/')
   })
 
   it('should show user name as "Testing user" when came to RandomCards page', () => {
     mockedUseUser.mockReturnValue({ user: { name: 'Testing user' } })
-
     render(
       <NextRouterProvider value={defaultRouterMocked}>
         <RandomCards />
       </NextRouterProvider>,
     )
+
     const useNameElement = screen.getByTestId('user-name-test-id')
 
     expect(useNameElement).toHaveTextContent('Testing user')
@@ -54,7 +54,6 @@ describe('RandomCards', () => {
 
   it('should show a spinner when cards is still loading', () => {
     server.use(emptyResponseFetchAnimes)
-
     render(
       <NextRouterProvider value={defaultRouterMocked}>
         <SWRConfig value={{ provider: () => new Map() }}>
@@ -74,6 +73,7 @@ describe('RandomCards', () => {
         <RandomCards />
       </NextRouterProvider>,
     )
+
     const cards = await screen.findAllByTestId('card-test-id')
 
     expect(cards).toHaveLength(5)
