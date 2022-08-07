@@ -33,6 +33,8 @@ export const RandomCards = () => {
   const { user } = useUser()
   const { replace } = useRouter()
 
+  console.log({ user })
+
   const { data: response, error } = useSWR('animes', fetchAnimes)
 
   const isLoading = !error && !response

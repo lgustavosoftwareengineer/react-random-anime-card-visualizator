@@ -4,6 +4,7 @@ import { SWRConfig } from 'swr'
 
 import { server } from 'src/mocks/server'
 import { nextRouterMock, NextRouterProvider } from 'src/mocks'
+import { useUser } from 'src/shared/user/useUser'
 
 import {
   emptyResponseFetchAnimes,
@@ -11,9 +12,8 @@ import {
 } from '../mocks/msw'
 import { RandomCards } from '..'
 
-jest.mock('src/shared/user', () => ({
-  useUser: () => ({ user: { name: 'Testing user' } }),
-}))
+jest.mock('src/shared/user/useUser')
+const mockedUseUser = jest.mocked(useUser)
 
 describe('RandomCards', () => {
   const defaultRouterMocked = nextRouterMock()
@@ -23,8 +23,25 @@ describe('RandomCards', () => {
   beforeAll(() => server.listen())
   afterEach(() => server.resetHandlers())
   afterAll(() => server.close())
+  beforeEach(() => {
+    jest.resetModules()
+    jest.dontMock('src/shared/user/useUser.tsx')
+  })
+
+  it('should back to sign up screen when user name is empty', () => {
+    mockedUseUser.mockReturnValue({ user: { name: '' } })
+
+    render(
+      <NextRouterProvider value={defaultRouterMocked}>
+        <RandomCards />
+      </NextRouterProvider>,
+    )
+    expect(defaultRouterMocked.replace).toBeCalledWith('/')
+  })
 
   it('should show user name as "Testing user" when came to RandomCards page', () => {
+    mockedUseUser.mockReturnValue({ user: { name: 'Testing user' } })
+
     render(
       <NextRouterProvider value={defaultRouterMocked}>
         <RandomCards />
