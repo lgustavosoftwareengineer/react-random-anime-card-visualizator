@@ -4,5 +4,5 @@ import { InputCSS } from '../styles'
 
 export const StyledTextInput = styled.input`
   ${InputCSS};
-  border: 1px solid #f3f3f3;
+  border: 1px solid #${({ theme }) => theme.colors.text};
 `

@@ -4,9 +4,9 @@ import { InputCSS } from '../styles'
 export const StyledButtonInput = styled.input`
   ${InputCSS};
 
-  background-color: #c20c33;
+  background-color: ${({ theme }) => theme.colors.primary};
   font-weight: bold;
-  color: #f3f3f3;
+  color: ${({ theme }) => theme.colors.text};
   border: none;
   transition: 0.3s;
   min-width: 50px;
@@ -17,8 +17,8 @@ export const StyledButtonInput = styled.input`
   }
 
   &:disabled {
-    color: #f3f3f380;
-    background-color: #c20c3380;
+    color: ${({ theme }) => `${theme.colors.text}80`};
+    background-color: ${({ theme }) => `${theme.colors.primary}80`};
     cursor: auto;
   }
 `
