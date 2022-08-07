@@ -22,7 +22,7 @@ export const useCards = () => {
     const firstFiveElementsFromAnimes = shuffledAnimes.slice(0, 5)
 
     setCards(firstFiveElementsFromAnimes)
-  }, [shuffledAnimes])
+  }, [shuffledAnimes, cards.length])
 
   return {
     cards,
