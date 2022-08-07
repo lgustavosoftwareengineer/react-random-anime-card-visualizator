@@ -11,7 +11,6 @@ export const Title = styled.p`
   font-size: 22px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.primary};
-  text-align: left;
   text-transform: uppercase;
 `
 
@@ -25,7 +24,6 @@ export const Container = styled.div`
   padding: 20px;
   width: 20vw;
   justify-content: space-between;
-  text-align: center;
 
   @media only screen and (max-width: 600px) {
     & {
@@ -50,7 +48,6 @@ export const TextCSS = css`
 
 export const ContentText = styled.p`
   ${TextCSS};
-  text-align: left;
 `
 
 type CardNumberProp = {
