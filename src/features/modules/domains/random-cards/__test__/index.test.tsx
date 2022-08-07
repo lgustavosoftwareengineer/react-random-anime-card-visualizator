@@ -2,7 +2,6 @@ import React from 'react'
 import { screen, render, fireEvent } from '@testing-library/react'
 import { SWRConfig } from 'swr'
 
-import { server } from 'src/mocks/server'
 import { nextRouterMock, NextRouterProvider } from 'src/mocks'
 import { useUser } from 'src/shared/user/useUser'
 import { ThemeProvider } from 'src/app/providers/ThemeProvider'
@@ -12,6 +11,7 @@ import {
   successResponseFetchAnimes,
 } from '../mocks/msw'
 import { RandomCards } from '..'
+import { setupServer } from 'msw/node'
 
 jest.mock('src/shared/user/useUser')
 const mockedUseUser = jest.mocked(useUser)
@@ -27,7 +27,7 @@ describe('RandomCards', () => {
     </ThemeProvider>
   )
 
-  server.use(successResponseFetchAnimes)
+  const server = setupServer(successResponseFetchAnimes)
 
   beforeAll(() => server.listen())
   afterEach(() => server.resetHandlers())
