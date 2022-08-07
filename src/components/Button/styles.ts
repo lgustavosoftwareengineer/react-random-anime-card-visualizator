@@ -9,6 +9,7 @@ export const StyledButtonInput = styled.input`
   color: #f3f3f3;
   border: none;
   transition: 0.3s;
+  min-width: 50px;
 
   &:hover,
   &:enabled {
