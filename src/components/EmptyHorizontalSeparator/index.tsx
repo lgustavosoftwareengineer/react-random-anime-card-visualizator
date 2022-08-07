@@ -1,4 +1,5 @@
 import React from 'react'
+
 import { StyledEmptySeparator } from './style'
 import { EmptyHorizontalSeparatorProp } from './types'
 

@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import useSWR from 'swr'
 
 import { Button, LoadingIndicator } from 'src/components'
 import { useUser } from 'src/shared'
 
 import { AnimeCardsList } from './components'
+import { shuffleList } from './utils'
+import {
+  AnimeResponseLinks,
+  AnimeResponseMeta,
+  Datum,
+} from './requests/fetchAnimes/types'
+import { fetchAnimes } from './requests'
 import {
   Main,
   ButtonsContainer,
@@ -12,14 +20,6 @@ import {
   Header,
   UserName,
 } from './styles'
-import { shuffleList } from './utils'
-import useSWR from 'swr'
-import {
-  AnimeResponseLinks,
-  AnimeResponseMeta,
-  Datum,
-} from './requests/fetchAnimes/types'
-import { fetchAnimes } from './requests'
 
 const CLICK_ADD_MORE_CARD_BUTTON_TIMES_AMOUNT_LIMIT = 3
 

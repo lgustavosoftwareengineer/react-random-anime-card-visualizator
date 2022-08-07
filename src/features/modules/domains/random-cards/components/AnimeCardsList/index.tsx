@@ -1,5 +1,7 @@
 import React from 'react'
+
 import { EmptyHorizontalSeparator } from 'src/components'
+
 import { Datum } from '../../requests/fetchAnimes/types'
 import { generateRandomNumber } from '../../utils'
 
