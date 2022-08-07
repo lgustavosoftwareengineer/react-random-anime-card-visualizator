@@ -55,6 +55,19 @@ export const RandomCards = () => {
     }
   }, [user.name, replace])
 
+  const [shouldShuffleButtonBeDisabled, setShouldShuffleButtonBeDisabled] =
+    useState(true)
+
+  useEffect(() => {
+    setShouldShuffleButtonBeDisabled(true)
+
+    const timeout = setTimeout(() => {
+      setShouldShuffleButtonBeDisabled(false)
+    }, 1000)
+
+    return () => clearTimeout(timeout)
+  }, [cards])
+
   return (
     <Main>
       <Header>
@@ -72,7 +85,11 @@ export const RandomCards = () => {
           disabled={shouldClickToAddMoreCardButtonBeDisabled}
         />
         <EmptySeparator />
-        <Button value="Embaralhar cartas" onClick={onClickShuffleCards} />
+        <Button
+          value="Embaralhar cartas"
+          onClick={onClickShuffleCards}
+          disabled={shouldShuffleButtonBeDisabled}
+        />
       </ButtonsContainer>
     </Main>
   )
