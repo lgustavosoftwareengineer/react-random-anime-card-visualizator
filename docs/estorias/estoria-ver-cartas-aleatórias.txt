@@ -14,8 +14,8 @@ Então deve aparecer o nome do usuário no canto superior direito
 
 Cenário 2: Listagem de cartas está sendo carregadas
 Dado que eu estou na tela de listagem de cartas aleatórias
-E as fotos das 5 cartas iniciais ainda não carregaram
-Então deve ser apresentado um loading em cada uma das 5 carta
+E as cartas ainda não foram carregadas
+Então deve ser apresentado um loading
 
 Cenário 3: Listagem de cartas foram carregadas
 Dado que eu estou na tela de listagem de cartas aleatórias
@@ -34,15 +34,7 @@ Quando eu clicar no botão "Puxar uma nova carta aleatoriamente"
 Então deve ser acrescentada uma nova carta aleatória na lista de cartas
 E essa nova carta deve estar no final da lista
 
-Cenário 5: Uma nova carta foi adicionada
-Dado que uma nova carta foi adicionada na listagem de cartas aleatórias
-E o botão "Puxar uma nova carta aleatoriamente" está habilitado
-E eu cliquei no botão "Puxar uma nova carta aleatoriamente"
-E foi acrescentada uma nova carta aleatória na lista de cartas
-Então essa nova carta deve ser acrescentada com um loading 
-enquanto a imagem está carregando
-
-Cenário 6: Cliquei no botão de "Puxar uma nova carta aleatoriamente" 3 vezes
+Cenário 5: Cliquei no botão de "Puxar uma nova carta aleatoriamente" 3 vezes
 Dado que eu já cliquei no botão de "Puxar uma nova carta aleatoriamente" 3 vezes
 Então o botão "Puxar uma nova carta aleatoriamente" deve estar desabilitado
 E o texto do botão deve mudar para
