@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --silent --passWithNoTests",
+    "test::coverage": "jest --silent --passWithNoTests --coverage",
     "lint": "next lint"
   },
   "dependencies": {

@@ -21,4 +21,4 @@ jobs:
         run: yarn install
 
       - name: 🧪 Running tests
-        run: yarn test
+        run: yarn test::coverage
