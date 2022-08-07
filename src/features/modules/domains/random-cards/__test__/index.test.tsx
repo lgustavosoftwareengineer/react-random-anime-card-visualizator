@@ -1,6 +1,7 @@
 import React from 'react'
 import { screen, render, fireEvent } from '@testing-library/react'
 import { SWRConfig } from 'swr'
+import { setupServer } from 'msw/node'
 
 import { nextRouterMock, NextRouterProvider } from 'src/mocks'
 import { useUser } from 'src/shared/user/useUser'
@@ -11,7 +12,6 @@ import {
   successResponseFetchAnimes,
 } from '../mocks/msw'
 import { RandomCards } from '..'
-import { setupServer } from 'msw/node'
 
 jest.mock('src/shared/user/useUser')
 const mockedUseUser = jest.mocked(useUser)
