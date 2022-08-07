@@ -12,6 +12,12 @@ jest.mock('../utils/buildCardsElementsListWithRandomNumbersValues.ts', () => {
   }
 })
 
+jest.mock('../utils/shuffleList.ts', () => {
+  return {
+    shuffleList: () => [2, 3, 1, 5, 4],
+  }
+})
+
 jest.mock('src/shared/user', () => ({
   useUser: () => ({ user: { name: 'Testing user' } }),
 }))
@@ -81,7 +87,7 @@ describe('RandomCards', () => {
       const loadingIndicators = await screen.findAllByTestId(
         'loading-activity-test-id',
       )
-      expect(loadingIndicators).toHaveLength(1)
+      expect(loadingIndicators).toBeDefined()
     })
   })
   it("should the 'Puxar uma nova carta aleatoriamente' button be disabled when user already clicked three times in it", () => {
@@ -115,6 +121,8 @@ describe('RandomCards', () => {
     fireEvent.click(shuffleCardsButton)
     const cardsAfterShuffle = await screen.findAllByTestId('card-test-id')
 
-    expect(cardsBeforeShuffle).not.toEqual(cardsAfterShuffle)
+    cardsBeforeShuffle.forEach((cards, index) => {
+      expect(cards.textContent).not.toBe(cardsAfterShuffle[index])
+    })
   })
 })
