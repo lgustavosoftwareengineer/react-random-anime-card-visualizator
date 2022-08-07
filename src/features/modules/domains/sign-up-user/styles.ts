@@ -14,10 +14,6 @@ export const CardContent = styled.div`
   width: 50vw;
   flex-direction: column;
   justify-content: center;
-
-  input[type='text'] {
-    border: 1px solid #f3f3f3;
-  }
 `
 
 export const WelcomeText = styled.p`
