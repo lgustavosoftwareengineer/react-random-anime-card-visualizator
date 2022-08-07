@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid'
 import { Datum } from '../../requests/fetchAnimes/types'
 
 import { AnimeCard } from './components'
-import { ListContainer } from './style'
+import { ListContainer } from './styles'
 
 const renderCard = (anime: Datum) => {
   const id = nanoid()

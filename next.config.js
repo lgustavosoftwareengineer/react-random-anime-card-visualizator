@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ['media.kitsu.io'],
+    domains: ['media.kitsu.io', 'robohash.org'],
   },
 }
 

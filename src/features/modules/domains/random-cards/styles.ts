@@ -28,14 +28,10 @@ export const Header = styled.header`
   display: flex;
   width: 100%;
   padding: 20px;
+  align-items: center;
   justify-content: flex-end;
   background-color: ${({ theme }) => theme.colors.primary};
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-`
-
-export const UserName = styled.p`
-  font-weight: bold;
-  color: ${({ theme }) => theme.colors.onPrimary};
 `
 
 export const LoadingContainer = styled.div`

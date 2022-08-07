@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { Button, LoadingIndicator } from 'src/components'
 import { useUser } from 'src/shared'
 
-import { AnimeCardsList } from './components'
+import { AnimeCardsList, UserInfos } from './components'
 import { shuffleList } from './utils'
 import {
   AnimeResponseLinks,
@@ -16,7 +16,6 @@ import {
   ButtonsContainer,
   EmptySeparator,
   Header,
-  UserName,
   LoadingContainer,
 } from './styles'
 import { useCards } from './hooks'
@@ -67,7 +66,7 @@ export const RandomCards = () => {
   return (
     <Main>
       <Header>
-        <UserName data-testid="user-name-test-id">{user.name}</UserName>
+        <UserInfos userName={user.name} />
       </Header>
       {isLoading ? (
         <LoadingContainer>
