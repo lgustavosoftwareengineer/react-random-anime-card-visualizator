@@ -10,6 +10,9 @@ export const Title = styled.p`
   white-space: nowrap;
   font-size: 22px;
   font-weight: bold;
+  color: ${({ theme }) => theme.colors.primary};
+  text-align: left;
+  text-transform: uppercase;
 `
 
 export const CardContainer = styled.div`
@@ -47,6 +50,7 @@ export const TextCSS = css`
 
 export const ContentText = styled.p`
   ${TextCSS};
+  text-align: left;
 `
 
 type CardNumberProp = {

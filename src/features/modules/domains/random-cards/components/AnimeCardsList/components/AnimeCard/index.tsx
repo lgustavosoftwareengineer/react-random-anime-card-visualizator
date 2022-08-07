@@ -27,7 +27,7 @@ export const AnimeCard = ({ anime, ...props }: AnimeCardProps) => {
           </CardNumber>
           <CardInnerContainer>
             <Header>
-              <Title>{anime.attributes.slug}</Title>
+              <Title>{anime.attributes.canonicalTitle}</Title>
               {anime.attributes.posterImage.large && (
                 <AnimePosterImage
                   src={anime.attributes.posterImage.large ?? ''}
