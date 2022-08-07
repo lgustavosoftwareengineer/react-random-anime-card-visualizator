@@ -10,7 +10,7 @@ export const Main = styled.main`
 export const CardContent = styled.div`
   padding: 20px;
   display: flex;
-  height: 50vh;
+  height: 100%;
   width: 50vw;
   flex-direction: column;
   justify-content: center;
@@ -21,6 +21,6 @@ export const CardContent = styled.div`
 `
 
 export const WelcomeText = styled.p`
-  font-size: 24px;
+  font-size: 1.5rem;
   text-align: center;
 `

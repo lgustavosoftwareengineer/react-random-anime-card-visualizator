@@ -2,16 +2,14 @@ import styled, { css } from 'styled-components'
 
 export const Title = styled.p`
   height: 40px;
-  font-size: 20px;
+  font-size: 1.2rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 `
 
 export const ContainerCSS = css`
-  display: flex;
   width: 200px;
-  height: 500px;
   flex-direction: column;
 `
 
@@ -29,6 +27,7 @@ export const LoadingContainer = styled.div`
 `
 
 export const ContentText = styled.p`
+  height: 20%;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

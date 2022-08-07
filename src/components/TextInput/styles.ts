@@ -4,5 +4,5 @@ import { InputCSS } from '../styles'
 
 export const StyledTextInput = styled.input`
   ${InputCSS};
-  font-size: 16px;
+  font-size: 1rem;
 `
