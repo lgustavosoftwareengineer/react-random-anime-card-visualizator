@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import useSWR from 'swr'
 
 import { Button, LoadingIndicator } from 'src/components'
 import { useUser } from 'src/shared'
@@ -12,7 +11,6 @@ import {
   AnimeResponseMeta,
   Datum,
 } from './requests/fetchAnimes/types'
-import { fetchAnimes } from './requests'
 import {
   Main,
   ButtonsContainer,
@@ -20,6 +18,7 @@ import {
   Header,
   UserName,
 } from './styles'
+import { useCards } from './hooks'
 
 const CLICK_ADD_MORE_CARD_BUTTON_TIMES_AMOUNT_LIMIT = 3
 
@@ -33,17 +32,8 @@ export const RandomCards = () => {
   const { user } = useUser()
   const { replace } = useRouter()
 
-  const { data: response, error } = useSWR('animes', fetchAnimes)
+  const { cards, isLoading, setCards, shuffledAnimes } = useCards()
 
-  const isLoading = !error && !response
-
-  const { data } = response ?? {}
-  const { data: animes = [] } = data ?? {}
-
-  const shuffledAnimes = shuffleList(animes)
-  const firstFiveElementsFromAnimes = shuffledAnimes.slice(0, 5)
-
-  const [cards, setCards] = useState<Datum[]>(firstFiveElementsFromAnimes)
   const [
     numberOfTimesTheUserClickedOnTheAddMoreCardsButton,
     setNumberOfTimesTheUserClickedOnTheAddMoreCardsButton,
