@@ -1,3 +1,4 @@
+import { ResponsiveTextMediaQuery } from 'src/styles'
 import styled from 'styled-components'
 
 export const Main = styled.main`
@@ -19,4 +20,6 @@ export const CardContent = styled.div`
 export const WelcomeText = styled.p`
   font-size: 1.5rem;
   text-align: center;
+
+  ${ResponsiveTextMediaQuery}
 `
