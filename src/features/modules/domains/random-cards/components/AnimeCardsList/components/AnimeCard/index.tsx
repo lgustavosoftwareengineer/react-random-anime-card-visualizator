@@ -6,28 +6,25 @@ import { Datum } from 'src/features/modules/domains/random-cards/requests/fetchA
 
 import { Container, ContentText, Title, Header } from './styles'
 
-export type AnimeCardProps = { randomElementId: Datum } & Omit<
-  CardProps,
-  'children'
->
+export type AnimeCardProps = { anime: Datum } & Omit<CardProps, 'children'>
 
-export const AnimeCard = ({ randomElementId, ...props }: AnimeCardProps) => {
+export const AnimeCard = ({ anime, ...props }: AnimeCardProps) => {
   return (
     <Card data-testid="card-test-id" {...props}>
       <Container>
         <Header>
-          <Title>{randomElementId.attributes.slug}</Title>
-          {randomElementId.attributes.posterImage.large && (
+          <Title>{anime.attributes.slug}</Title>
+          {anime.attributes.posterImage.large && (
             <Image
-              src={randomElementId.attributes.posterImage.large ?? ''}
+              src={anime.attributes.posterImage.large ?? ''}
               alt="anime-poster-image"
               width={100}
               height={150}
             />
           )}
         </Header>
-        <ContentText>{randomElementId.attributes.description}</ContentText>
-        <ContentText>{randomElementId.id}</ContentText>
+        <ContentText>{anime.attributes.description}</ContentText>
+        <ContentText>{anime.id}</ContentText>
       </Container>
     </Card>
   )

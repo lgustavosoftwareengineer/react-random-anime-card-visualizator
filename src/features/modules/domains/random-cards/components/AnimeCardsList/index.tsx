@@ -10,13 +10,13 @@ import { ListContainer } from './style'
 
 const LIST_SEPARATOR_WIDTH = 20
 
-const renderCard = (element: Datum, _: number, list: Datum[]) => {
-  const isLastElement = list[list.length - 1].id === element.id
+const renderCard = (anime: Datum, _: number, list: Datum[]) => {
+  const isLastElement = list[list.length - 1].id === anime.id
   const randomNumber = generateRandomNumber()
 
   return (
-    <React.Fragment key={String(element.id + randomNumber)}>
-      <AnimeCard randomElementId={element} />
+    <React.Fragment key={String(anime.id + randomNumber)}>
+      <AnimeCard anime={anime} />
       {!isLastElement && (
         <EmptyHorizontalSeparator width={LIST_SEPARATOR_WIDTH} />
       )}
