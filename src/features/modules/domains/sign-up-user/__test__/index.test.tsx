@@ -5,13 +5,16 @@ import { fireEvent, render, screen } from '@testing-library/react'
 import { nextRouterMock, NextRouterProvider } from 'src/mocks'
 
 import { SignUpUser } from '..'
+import { ThemeProvider } from 'src/app/providers/ThemeProvider'
 
 describe('SignUpUser', () => {
   const defaultRouterMocked = nextRouterMock()
   const SignUpUserWithRouterContextProvider = () => (
-    <NextRouterProvider value={defaultRouterMocked}>
-      <SignUpUser />
-    </NextRouterProvider>
+    <ThemeProvider>
+      <NextRouterProvider value={defaultRouterMocked}>
+        <SignUpUser />
+      </NextRouterProvider>
+    </ThemeProvider>
   )
 
   it("should 'Clicar para ver cartas' button be disabled when user name input be empty", () => {

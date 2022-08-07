@@ -5,6 +5,7 @@ import { SWRConfig } from 'swr'
 import { server } from 'src/mocks/server'
 import { nextRouterMock, NextRouterProvider } from 'src/mocks'
 import { useUser } from 'src/shared/user/useUser'
+import { ThemeProvider } from 'src/app/providers/ThemeProvider'
 
 import {
   emptyResponseFetchAnimes,
@@ -18,6 +19,14 @@ const mockedUseUser = jest.mocked(useUser)
 describe('RandomCards', () => {
   const defaultRouterMocked = nextRouterMock()
 
+  const RandomCardsMockWithProviders = () => (
+    <ThemeProvider>
+      <NextRouterProvider value={defaultRouterMocked}>
+        <RandomCards />
+      </NextRouterProvider>
+    </ThemeProvider>
+  )
+
   server.use(successResponseFetchAnimes)
 
   beforeAll(() => server.listen())
@@ -30,22 +39,14 @@ describe('RandomCards', () => {
 
   it('should back to sign up screen when user name is empty', () => {
     mockedUseUser.mockReturnValue({ user: { name: '' } })
-    render(
-      <NextRouterProvider value={defaultRouterMocked}>
-        <RandomCards />
-      </NextRouterProvider>,
-    )
+    render(<RandomCardsMockWithProviders />)
 
     expect(defaultRouterMocked.replace).toBeCalledWith('/')
   })
 
   it('should show user name as "Testing user" when came to RandomCards page', () => {
     mockedUseUser.mockReturnValue({ user: { name: 'Testing user' } })
-    render(
-      <NextRouterProvider value={defaultRouterMocked}>
-        <RandomCards />
-      </NextRouterProvider>,
-    )
+    render(<RandomCardsMockWithProviders />)
 
     const useNameElement = screen.getByTestId('user-name-test-id')
 
@@ -55,11 +56,9 @@ describe('RandomCards', () => {
   it('should show a spinner when cards is still loading', () => {
     server.use(emptyResponseFetchAnimes)
     render(
-      <NextRouterProvider value={defaultRouterMocked}>
-        <SWRConfig value={{ provider: () => new Map() }}>
-          <RandomCards />
-        </SWRConfig>
-      </NextRouterProvider>,
+      <SWRConfig value={{ provider: () => new Map() }}>
+        <RandomCardsMockWithProviders />
+      </SWRConfig>,
     )
 
     const loadingIndicators = screen.getAllByTestId('loading-activity-test-id')
@@ -68,11 +67,7 @@ describe('RandomCards', () => {
   })
 
   it('should show 5 when cards is still loaded with success', async () => {
-    render(
-      <NextRouterProvider value={defaultRouterMocked}>
-        <RandomCards />
-      </NextRouterProvider>,
-    )
+    render(<RandomCardsMockWithProviders />)
 
     const cards = await screen.findAllByTestId('card-test-id')
 
@@ -80,11 +75,7 @@ describe('RandomCards', () => {
   })
 
   it("should add a new card in the end from the 5 cards when user click in 'Puxar uma nova carta aleatoriamente' button", async () => {
-    render(
-      <NextRouterProvider value={defaultRouterMocked}>
-        <RandomCards />
-      </NextRouterProvider>,
-    )
+    render(<RandomCardsMockWithProviders />)
     const getMoreCardButton = screen.getByDisplayValue(
       'Puxar uma nova carta aleatoriamente',
     )
@@ -96,11 +87,7 @@ describe('RandomCards', () => {
   })
 
   it("should the 'Puxar uma nova carta aleatoriamente' button be disabled when user already clicked three times in it", () => {
-    render(
-      <NextRouterProvider value={defaultRouterMocked}>
-        <RandomCards />
-      </NextRouterProvider>,
-    )
+    render(<RandomCardsMockWithProviders />)
     const getMoreCardButton = screen.getByDisplayValue(
       'Puxar uma nova carta aleatoriamente',
     )
@@ -113,11 +100,7 @@ describe('RandomCards', () => {
   })
 
   it("should the 'Puxar uma nova carta aleatoriamente' button display value be 'Limite atingido (3x)' when user already clicked three times in it", () => {
-    render(
-      <NextRouterProvider value={defaultRouterMocked}>
-        <RandomCards />
-      </NextRouterProvider>,
-    )
+    render(<RandomCardsMockWithProviders />)
     const getMoreCardButton = screen.getByDisplayValue(
       'Puxar uma nova carta aleatoriamente',
     )
@@ -130,11 +113,7 @@ describe('RandomCards', () => {
   })
 
   it("should cards order be swapped when user click in 'Embaralhar cartas' button", async () => {
-    render(
-      <NextRouterProvider value={defaultRouterMocked}>
-        <RandomCards />
-      </NextRouterProvider>,
-    )
+    render(<RandomCardsMockWithProviders />)
     const cardsBeforeShuffle = await screen.findAllByTestId('card-test-id')
     const shuffleCardsButton = screen.getByDisplayValue('Embaralhar cartas')
 
