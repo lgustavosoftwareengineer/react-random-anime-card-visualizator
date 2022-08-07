@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { useUser } from 'src/shared'
 import { Card, Button, TextInput } from 'src/components'
 
-import { CardContent, Main, WelcomeText } from './styles'
+import { CardContent, Main, WelcomeText, Title } from './styles'
 
 export const SignUpUser = () => {
   const { push } = useRouter()
@@ -21,10 +21,11 @@ export const SignUpUser = () => {
     <Main>
       <Card>
         <CardContent>
-          <WelcomeText>
-            Seja bem-vindo(a) ao <b>react-random-anime-card-visualizator</b>
-            <br /> Adicione seu nome logo a baixo para começar
-          </WelcomeText>
+          <Title>
+            <WelcomeText>Seja bem-vindo(a) </WelcomeText> ao{' '}
+            <b>react-random-anime-card-visualizator</b>
+            <br /> <br /> Adicione seu nome logo a baixo para começar o jogo! :)
+          </Title>
           <TextInput
             name="user-name-input"
             placeholder="Digite aqui o seu nome"

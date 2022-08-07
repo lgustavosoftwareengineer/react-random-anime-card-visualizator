@@ -25,9 +25,13 @@ export const CardContent = styled.div`
   }
 `
 
-export const WelcomeText = styled.p`
+export const Title = styled.p`
   font-size: 1.5rem;
   text-align: center;
 
   ${ResponsiveTextMediaQuery}
+`
+
+export const WelcomeText = styled.h1`
+  text-transform: capitalize;
 `
