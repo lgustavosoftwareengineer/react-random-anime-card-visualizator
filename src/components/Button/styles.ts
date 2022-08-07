@@ -6,7 +6,7 @@ export const StyledButtonInput = styled.input`
 
   background-color: ${({ theme }) => theme.colors.primary};
   font-weight: bold;
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.onPrimary};
   border: none;
   transition: 0.3s;
   min-width: 50px;
@@ -17,7 +17,7 @@ export const StyledButtonInput = styled.input`
   }
 
   &:disabled {
-    color: ${({ theme }) => `${theme.colors.text}80`};
+    color: ${({ theme }) => `${theme.colors.onPrimary}80`};
     background-color: ${({ theme }) => `${theme.colors.primary}80`};
     cursor: auto;
   }

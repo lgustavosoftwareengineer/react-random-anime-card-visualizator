@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const LoadingIndicatorContainer = styled.div`
-  border: 4px solid ${({ theme }) => theme.colors.text};
+  border: 4px solid ${({ theme }) => theme.colors.onPrimary};
   border-top: 4px solid ${({ theme }) => theme.colors.primary};
   border-radius: 50%;
   width: 5vw;

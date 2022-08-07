@@ -8,7 +8,7 @@ export type ThemeProviderProps = {
 const theme = {
   colors: {
     primary: '#c20c33',
-    text: '#f3f3f3',
+    onPrimary: '#f3f3f3',
   },
 }
 
