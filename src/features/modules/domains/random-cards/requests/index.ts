@@ -1,1 +1,1 @@
-export * from './fetchAnimeById'
+export * from './fetchAnimes'

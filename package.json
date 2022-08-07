@@ -44,7 +44,7 @@
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
     "lint-staged": "^13.0.3",
-    "nock": "^13.2.9",
+    "msw": "^0.44.2",
     "prettier": "^2.7.1",
     "typescript": "4.7.4"
   },
@@ -53,5 +53,8 @@
       "eslint '*/**/*.{js,ts,tsx}' --quiet --ignore-pattern node_modules --fix",
       "yarn test"
     ]
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

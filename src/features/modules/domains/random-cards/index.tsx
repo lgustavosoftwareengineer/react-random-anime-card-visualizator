@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
-import { Button } from 'src/components'
+import { Button, LoadingIndicator } from 'src/components'
 import { useUser } from 'src/shared'
 
 import { AnimeCardsList } from './components'
@@ -12,20 +12,38 @@ import {
   Header,
   UserName,
 } from './styles'
+import { shuffleList } from './utils'
+import useSWR from 'swr'
 import {
-  buildCardsElementsListWithRandomNumbersValues,
-  generateRandomNumber,
-  shuffleList,
-} from './utils'
+  AnimeResponseLinks,
+  AnimeResponseMeta,
+  Datum,
+} from './requests/fetchAnimes/types'
+import { fetchAnimes } from './requests'
 
-const INITIAL_CARDS_ELEMENTS = buildCardsElementsListWithRandomNumbersValues()
 const CLICK_ADD_MORE_CARD_BUTTON_TIMES_AMOUNT_LIMIT = 3
+
+export type AnimeByIdResponse = {
+  data: Datum[]
+  meta: AnimeResponseMeta
+  links: AnimeResponseLinks
+}
 
 export const RandomCards = () => {
   const { user } = useUser()
   const { replace } = useRouter()
 
-  const [cards, setCards] = useState(INITIAL_CARDS_ELEMENTS)
+  const { data: response, error } = useSWR('animes', fetchAnimes)
+
+  const isLoading = !error && !response
+
+  const { data } = response ?? {}
+  const { data: animes = [] } = data ?? {}
+
+  const shuffledAnimes = shuffleList(animes)
+  const firstFiveElementsFromAnimes = shuffledAnimes.slice(0, 5)
+
+  const [cards, setCards] = useState<Datum[]>(firstFiveElementsFromAnimes)
   const [
     numberOfTimesTheUserClickedOnTheAddMoreCardsButton,
     setNumberOfTimesTheUserClickedOnTheAddMoreCardsButton,
@@ -36,9 +54,9 @@ export const RandomCards = () => {
     CLICK_ADD_MORE_CARD_BUTTON_TIMES_AMOUNT_LIMIT
 
   const onClickAddOneMoreCard = () => {
-    const generateNewRandomNumber = generateRandomNumber()
+    const [firstShuffledAnimes] = shuffledAnimes
 
-    setCards((prevState) => [...prevState, generateNewRandomNumber])
+    setCards((prevState) => [...prevState, firstShuffledAnimes])
 
     setNumberOfTimesTheUserClickedOnTheAddMoreCardsButton(
       (prevState) => ++prevState,
@@ -60,7 +78,7 @@ export const RandomCards = () => {
       <Header>
         <UserName data-testid="user-name-test-id">{user.name}</UserName>
       </Header>
-      <AnimeCardsList cards={cards} />
+      {isLoading ? <LoadingIndicator /> : <AnimeCardsList cards={cards} />}
       <ButtonsContainer>
         <Button
           value={
@@ -69,10 +87,14 @@ export const RandomCards = () => {
               : 'Puxar uma nova carta aleatoriamente'
           }
           onClick={onClickAddOneMoreCard}
-          disabled={shouldClickToAddMoreCardButtonBeDisabled}
+          disabled={isLoading || shouldClickToAddMoreCardButtonBeDisabled}
         />
         <EmptySeparator />
-        <Button value="Embaralhar cartas" onClick={onClickShuffleCards} />
+        <Button
+          value="Embaralhar cartas"
+          onClick={onClickShuffleCards}
+          disabled={isLoading}
+        />
       </ButtonsContainer>
     </Main>
   )
