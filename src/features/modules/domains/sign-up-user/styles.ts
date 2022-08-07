@@ -33,5 +33,6 @@ export const Title = styled.p`
 `
 
 export const WelcomeText = styled.h1`
-  text-transform: capitalize;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.primary};
 `
