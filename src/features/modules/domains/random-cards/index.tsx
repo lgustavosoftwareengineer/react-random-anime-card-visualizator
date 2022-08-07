@@ -44,7 +44,7 @@ export const RandomCards = () => {
     CLICK_ADD_MORE_CARD_BUTTON_TIMES_AMOUNT_LIMIT
 
   const onClickAddOneMoreCard = () => {
-    const [firstShuffledAnimes] = shuffledAnimes
+    const [firstShuffledAnimes] = shuffleList(shuffledAnimes)
 
     setCards((prevState) => [...prevState, firstShuffledAnimes])
 
