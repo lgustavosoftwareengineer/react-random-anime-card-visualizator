@@ -53,8 +53,5 @@
       "eslint '*/**/*.{js,ts,tsx}' --quiet --ignore-pattern node_modules --fix",
       "yarn test"
     ]
-  },
-  "msw": {
-    "workerDirectory": "public"
   }
 }
