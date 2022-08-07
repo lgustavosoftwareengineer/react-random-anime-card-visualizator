@@ -1,23 +1,24 @@
 import React from 'react'
 import { screen, render, fireEvent } from '@testing-library/react'
-import { rest } from 'msw'
+import { SWRConfig } from 'swr'
 
 import { server } from 'src/mocks/server'
 import { nextRouterMock, NextRouterProvider } from 'src/mocks'
 
+import {
+  emptyResponseFetchAnimes,
+  successResponseFetchAnimes,
+} from '../mocks/msw'
 import { RandomCards } from '..'
-import { SWRConfig } from 'swr'
-
-const NEXT_PUBLIC_API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL ?? ''
 
 jest.mock('src/shared/user', () => ({
   useUser: () => ({ user: { name: 'Testing user' } }),
 }))
 
-const requestUrl = `${NEXT_PUBLIC_API_BASE_URL}anime`
-
 describe('RandomCards', () => {
   const defaultRouterMocked = nextRouterMock()
+
+  server.use(successResponseFetchAnimes)
 
   beforeAll(() => server.listen())
   afterEach(() => server.resetHandlers())
@@ -35,11 +36,7 @@ describe('RandomCards', () => {
   })
 
   it('should show a spinner when cards is still loading', () => {
-    server.use(
-      rest.get(requestUrl, (req, res, ctx) => {
-        return res(ctx.status(200), ctx.json({}))
-      }),
-    )
+    server.use(emptyResponseFetchAnimes)
 
     render(
       <NextRouterProvider value={defaultRouterMocked}>
