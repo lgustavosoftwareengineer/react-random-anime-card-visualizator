@@ -15,6 +15,13 @@ export const CardContent = styled.div`
   width: 50vw;
   flex-direction: column;
   justify-content: center;
+
+  @media only screen and (max-width: 600px) {
+    & {
+      width: 80vw;
+      height: 50vh;
+    }
+  }
 `
 
 export const WelcomeText = styled.p`

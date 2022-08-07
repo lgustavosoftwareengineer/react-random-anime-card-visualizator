@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 export const LoadingIndicatorContainer = styled.div`
-  border: 4px solid ${({ theme }) => theme.colors.onPrimary};
-  border-top: 4px solid ${({ theme }) => theme.colors.primary};
+  border: 8px solid ${({ theme }) => theme.colors.onPrimary};
+  border-top: 8px solid ${({ theme }) => theme.colors.primary};
   border-radius: 50%;
-  width: 5vw;
-  height: 5vw;
+  width: 100px;
+  height: 100px;
   animation: spin 1s linear infinite;
 
   @keyframes spin {

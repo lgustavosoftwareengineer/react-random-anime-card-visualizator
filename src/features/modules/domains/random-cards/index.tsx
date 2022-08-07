@@ -17,6 +17,7 @@ import {
   EmptySeparator,
   Header,
   UserName,
+  LoadingContainer,
 } from './styles'
 import { useCards } from './hooks'
 
@@ -68,24 +69,32 @@ export const RandomCards = () => {
       <Header>
         <UserName data-testid="user-name-test-id">{user.name}</UserName>
       </Header>
-      {isLoading ? <LoadingIndicator /> : <AnimeCardsList cards={cards} />}
-      <ButtonsContainer>
-        <Button
-          value={
-            shouldClickToAddMoreCardButtonBeDisabled
-              ? 'Limite atingido (3x)'
-              : 'Puxar uma nova carta aleatoriamente'
-          }
-          onClick={onClickAddOneMoreCard}
-          disabled={isLoading || shouldClickToAddMoreCardButtonBeDisabled}
-        />
-        <EmptySeparator />
-        <Button
-          value="Embaralhar cartas"
-          onClick={onClickShuffleCards}
-          disabled={isLoading}
-        />
-      </ButtonsContainer>
+      {isLoading ? (
+        <LoadingContainer>
+          <LoadingIndicator />
+        </LoadingContainer>
+      ) : (
+        <AnimeCardsList cards={cards} />
+      )}
+      {!isLoading && (
+        <ButtonsContainer>
+          <Button
+            value={
+              shouldClickToAddMoreCardButtonBeDisabled
+                ? 'Limite atingido (3x)'
+                : 'Puxar uma nova carta aleatoriamente'
+            }
+            onClick={onClickAddOneMoreCard}
+            disabled={isLoading || shouldClickToAddMoreCardButtonBeDisabled}
+          />
+          <EmptySeparator />
+          <Button
+            value="Embaralhar cartas"
+            onClick={onClickShuffleCards}
+            disabled={isLoading}
+          />
+        </ButtonsContainer>
+      )}
     </Main>
   )
 }
