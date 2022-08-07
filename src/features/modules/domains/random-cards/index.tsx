@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useTransition } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { Button } from 'src/components'
@@ -25,8 +25,6 @@ export const RandomCards = () => {
   const { user } = useUser()
   const { replace } = useRouter()
 
-  const [, startTransition] = useTransition()
-
   const [cards, setCards] = useState(INITIAL_CARDS_ELEMENTS)
   const [
     numberOfTimesTheUserClickedOnTheAddMoreCardsButton,
@@ -40,9 +38,7 @@ export const RandomCards = () => {
   const onClickAddOneMoreCard = () => {
     const generateNewRandomNumber = generateRandomNumber()
 
-    startTransition(() => {
-      setCards((prevState) => [...prevState, generateNewRandomNumber])
-    })
+    setCards((prevState) => [...prevState, generateNewRandomNumber])
 
     setNumberOfTimesTheUserClickedOnTheAddMoreCardsButton(
       (prevState) => ++prevState,
@@ -50,9 +46,7 @@ export const RandomCards = () => {
   }
 
   const onClickShuffleCards = () => {
-    startTransition(() => {
-      setCards((prevState) => [...shuffleList(prevState)])
-    })
+    setCards((prevState) => [...shuffleList(prevState)])
   }
 
   useEffect(() => {
