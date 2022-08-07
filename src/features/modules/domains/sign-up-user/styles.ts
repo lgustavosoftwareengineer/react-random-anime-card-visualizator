@@ -9,6 +9,7 @@ export const Main = styled.main`
   justify-content: center;
   background-image: url(https://lunetas.com.br/wp-content/uploads/2022/04/animes-e-criancas-portal-lunetas.jpg.webp);
 `
+
 export const CardContent = styled.div`
   padding: 20px;
   display: flex;
