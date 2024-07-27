@@ -1,6 +1,6 @@
-<h1 align="center">React Random Anime Card Visualizator</h1>
+<h1 align="center">React Random Anime Card Visualizer</h1>
 
-## 💻 Tecnologias
+## 💻 Technologies
 
 - [NextJS](https://nextjs.org/)
 - [React](https://reactjs.org/)
@@ -9,46 +9,46 @@
 - [Styled Components](https://styled-components.com/)
 - [Axios](https://axios-http.com/docs/intro)
 - [Jest](https://jestjs.io/)
-- [React Testing library](https://testing-library.com/)
+- [React Testing Library](https://testing-library.com/)
 - [MSW](https://mswjs.io/)
 
-## 🌐 Ver versão de produção do projeto
+## 🌐 View Production Version of the Project
 
-Para ver o projeto em em produção do projeto acessar o seguinte [link](https://react-random-anime-card-visualizator.vercel.app/)
+To view the project in production, visit the following [link](https://react-random-anime-card-visualizator.vercel.app/)
 
-## 👷 Instalação
+## 👷 Installation
 
-Para que o serviço entre em execução, é necessário realizar os seguintes passos:
+To run the service, follow these steps:
 
-1. Clonar o repositório:
+1. Clone the repository:
 
 ```
 git clone https://github.com/tonicprism/react-random-anime-card-visualizator
 ```
 
-2. Instalar as dependências do projeto:
+2. Install the project dependencies:
 
 ```
 cd react-random-anime-card-visualizator
-yarn install // ou npm install
+yarn install // or npm install
 ```
 
-3. Executar o projeto:
+3. Run the project:
 
 ```
 yarn dev // npm run dev
 ```
 
-3. Abra o seguinte link no seu navegador
+4. Open the following link in your browser:
 
 ```
 http://localhost:3000/
 ```
 
-## 🎉 Metadados
+## 🎉 Metadata
 
 Luiz Gustavo – luiz.matias@upe.br<br>
 
-Entre em contato em caso de necessidade.
+Contact me if needed.
 
-Distribuído sob licença do MIT. Veja `LICENSE` para mais informações.
+Distributed under the MIT license. See `LICENSE` for more information.
